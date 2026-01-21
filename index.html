@@ -1731,7 +1731,7 @@
                 '12:00', '12:30', '13:00', '13:30',
                 '14:00', '14:30', '15:00', '15:30',
                 '16:00', '16:30', '17:00', '17:30',
-                '18:00', '18:30', '19:00', '19:30', '20:00'
+                '18:00', '18:30', '19:00'
             ];
 
             if (table.rows.length === 0) {
@@ -1797,13 +1797,6 @@
 
                     // 日付を跨ぐ場合は✕
                     if (slotEnd.getDate() !== slotStart.getDate()) {
-                        cell.textContent = '✕';
-                        cell.classList.add('unavailable');
-                        continue;
-                    }
-
-                    // 18時以降に終了する予約は✕
-                    if (slotEnd.getHours() === 20 && slotEnd.getMinutes() > 0 || slotEnd.getHours() > 20) {
                         cell.textContent = '✕';
                         cell.classList.add('unavailable');
                         continue;
@@ -2030,4 +2023,5 @@
 
 
 </html>
+
 
