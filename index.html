@@ -17,7 +17,7 @@
             /* 画面中央に固定 */
             transform: translateY(-50%) translateX(16px);
             /* 中央配置と右ずらし */
-            background: #3e3f41;
+            background: #5ce1e6;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,7 +38,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #000000;
             text-decoration: none;
             font-size: 10px;
             margin: 5px 0;
@@ -104,8 +104,8 @@
         }
 
         h1 {
-            background: linear-gradient(135deg, #3e3f41, #0c0c0c);
-            color: white;
+            background: #5ce1e6;
+            color: #000000;
             padding: 20px;
             border-radius: 0 0px 0px 0px;
             text-align: center;
@@ -186,12 +186,12 @@
             align-items: center;
             justify-content: center;
             background: white;
-            color: #13ca5e;
+            color: #5ce1e6;
             font-weight: bold;
             font-size: 0.9em;
             border-radius: 4px;
             padding: 2px 6px;
-            border: 2px solid #13ca5e;
+            border: 2px solid #5ce1e6;
         }
 
         input[type="text"],
@@ -241,8 +241,8 @@
         .symptoms button.active,
         .menu-sections button.active,
         .irradiations button.active {
-            background-color: #ffffff;
-            color: #141414;
+            background-color: #5ce1e6;
+            color: #000000;
         }
 
         .date-inputs input[type="datetime-local"] {
@@ -323,8 +323,8 @@
         }
 
         .calendar td.selected {
-            background-color: #3e3f41;
-            color: #fff;
+            background-color: #5ce1e6;
+            color: #000000;
         }
 
         .week-button-container {
@@ -426,7 +426,7 @@
             height: 60px;
             border: 5px solid rgba(255, 255, 255, 0.2);
             /* 薄い白で枠を柔らかく */
-            border-top-color: #00d1ff;
+            border-top-color: #5ce1e6;
             /* 明るい青で目立たせる */
             border-radius: 50%;
             /* 丸い形状 */
@@ -546,6 +546,36 @@
             }
         }
 
+        .info-textmenu {
+            position: relative;
+            /* ← 上下移動を有効にする */
+            top: -10px;
+            /* ← 上に8pxずらす（数値調整可） */
+            margin-top: 0;
+            /* ← 上のマージンは0にしておくと自然 */
+            margin-bottom: 0px;
+            font-size: 13px;
+            color: #000000;
+            line-height: 1.5;
+            text-align: center;
+            word-wrap: break-word;
+            background-color: #f3f3f3;
+            padding: 0px;
+            border-radius: 0 0 4px 4px;
+            border: 1px solid black;
+            border-top: none;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .info-textmenu {
+                font-size: 11.5px;
+                top: -10px;
+                /* ← モバイルでは少し控えめに上にずらす */
+                line-height: 2.0;
+            }
+        }
+
         .symptoms,
         .options {
             display: block;
@@ -637,16 +667,16 @@
 
         input:focus,
         textarea:focus {
-            border-color: #13ca5e;
+            border-color: #5ce1e6;
             outline: none;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            box-shadow: 0 0 8px rgba(92, 225, 230, 0.4);
         }
 
         button {
             padding: 12px;
             border: none;
             border-radius: 6px;
-            background-color: #3e3f41;
+            background-color: #5ce1e6;
             color: #000000;
             font-size: 16px;
             cursor: pointer;
@@ -662,7 +692,8 @@
             width: 100%;
             padding: 15px;
             font-size: 18px;
-            background-color: #272727;
+            background-color: #5ce1e6;
+            color: #000000;
             margin-top: 12px;
             /* ← ここで下方向にずらす */
         }
@@ -687,11 +718,11 @@
         }
 
         button.active {
-            outline: 1px solid #2b2b2b;
+            outline: 1px solid #5ce1e6;
             /* ここで枠線を指定 */
             outline-offset: 2px;
-    /* 外側に色を追加 */
-    box-shadow: 0 0 0 3px #616161
+            /* 外側に色を追加 */
+            box-shadow: 0 0 0 3px #5ce1e6
         }
 
         /* 必須マークのスタイル */
@@ -719,8 +750,8 @@
             left: 50%;
             transform: translate(-50%, -10px);
             /* Y方向に上げる */
-            background-color: #3e3f41;
-            color: #fff;
+            background-color: #5ce1e6;
+            color: #000000;
             padding: 3px 12px;
             /* ボックスのパディングを縮小 */
             border-radius: 8px;
@@ -954,8 +985,8 @@
         }
 
         .datetime-input:focus {
-            border-color: #007BFF;
-            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+            border-color: #5ce1e6;
+            box-shadow: 0 0 0 4px rgba(92, 225, 230, 0.4);
             /* タップ時の視覚的フィードバック */
             outline: none;
         }
@@ -1009,12 +1040,16 @@
         <div class="label" id="course">メニューをお選びください<span class="required">必須</span></div>
         <div class="info-text">※メニューを選択すると空き状況のカレンダーが表示されます</div>
         <div class="symptoms">
+            <button type="button" onclick="selectSymptom(this)" data-price="15000">オフのみ40分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">ワンカラー60分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">グラデーション60分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">フレンチ70分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース60分</button>
+            <div class="info-textmenu">※オフなしの所要時間となります</div>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース90分</button>
+            <div class="info-textmenu">※オフなしの所要時間となります</div>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース120分</button>
+            <div class="info-textmenu">※オフなしの所要時間となります</div>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本ワンカラー90分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本シンプルアートコース120分</button>
             <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本アートコース150分</button>
@@ -1023,13 +1058,20 @@
             <span class="highlight-text">オプション</span>
         </div>
         <div class="irradiations">
-            <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="1500">オフあり+30分</button>
-            <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="150">長さ出し1~3本(+10分)</button>
-            <button type="button" id="sanirradiations" onclick="selectirradiations(this)" data-price="150">長さ出し3~5本(+15分)</button>
-            <button type="button" id="yonirradiations" onclick="selectirradiations(this)" data-price="1500">長さ出し5本以上(+20分)</button>
-            <button type="button" id="goirradiations" onclick="selectirradiations(this)" data-price="150">亀裂補強1~3本(+10分)</button>
-            <button type="button" id="rokuirradiations" onclick="selectirradiations(this)" data-price="150">亀裂補強3~5本(+15分)</button>
-            <button type="button" id="nanairradiations" onclick="selectirradiations(this)" data-price="150">亀裂補強5本以上(+20分)</button>
+            <button type="button" id="firstirradiations" onclick="selectirradiations(this)"
+                data-price="1500">オフあり+30分</button>
+            <button type="button" id="repeatirradiations" onclick="selectirradiations(this)"
+                data-price="150">長さ出し1~3本(+10分)</button>
+            <button type="button" id="sanirradiations" onclick="selectirradiations(this)"
+                data-price="150">長さ出し3~5本(+15分)</button>
+            <button type="button" id="yonirradiations" onclick="selectirradiations(this)"
+                data-price="1500">長さ出し5本以上(+20分)</button>
+            <button type="button" id="goirradiations" onclick="selectirradiations(this)"
+                data-price="150">亀裂補強1~3本(+10分)</button>
+            <button type="button" id="rokuirradiations" onclick="selectirradiations(this)"
+                data-price="150">亀裂補強3~5本(+15分)</button>
+            <button type="button" id="nanairradiations" onclick="selectirradiations(this)"
+                data-price="150">亀裂補強5本以上(+20分)</button>
         </div>
 
         <div class="label">希望日時<span class="required">必須</span></div>
@@ -1132,6 +1174,7 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
+            'オフのみ40分': 40,
             'ワンカラー60分': 70,
             'グラデーション60分': 70,
             'フレンチ70分': 80,
@@ -1603,76 +1646,76 @@
             updateDisplayInfo();
         }
 
-// --- 追加箇所：送信中フラグを定義 ---
-    let isSubmitting = false;
+        // --- 追加箇所：送信中フラグを定義 ---
+        let isSubmitting = false;
 
-    function submitForm() {
-        // --- 追加箇所：送信中なら何もしない ---
-        if (isSubmitting) return;
-        
-        // 送信処理開始（フラグを立てる）
-        isSubmitting = true;
+        function submitForm() {
+            // --- 追加箇所：送信中なら何もしない ---
+            if (isSubmitting) return;
 
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            visitCount: visitCount,
-            selectedMenu: selectedMenu,
-            selectedSymptom: selectedSymptom && selectedSymptom.length > 0 ? selectedSymptom : null,
-            irradiationsCount: irradiationsCount,
-            dates: selectedFullDate ? [selectedFullDate] : null,
-            message: document.getElementById('message').value.trim()
-        };
+            // 送信処理開始（フラグを立てる）
+            isSubmitting = true;
 
-        // フォームデータのチェック
-        if (!formData.name) {
-            alert('お名前を入力してください。');
-            isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
-            return;
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                visitCount: visitCount,
+                selectedMenu: selectedMenu,
+                selectedSymptom: selectedSymptom && selectedSymptom.length > 0 ? selectedSymptom : null,
+                irradiationsCount: irradiationsCount,
+                dates: selectedFullDate ? [selectedFullDate] : null,
+                message: document.getElementById('message').value.trim()
+            };
+
+            // フォームデータのチェック
+            if (!formData.name) {
+                alert('お名前を入力してください。');
+                isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
+                return;
+            }
+
+            if (!formData.phone) {
+                alert('電話番号を入力してください。');
+                isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
+                return;
+            }
+
+            if (!formData.selectedSymptom) {
+                alert('メニューを選択してください。');
+                isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
+                return;
+            }
+
+            if (!formData.dates) {
+                alert('希望日時を選択してください。');
+                isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
+                return;
+            }
+
+            // selectedSymptomを文字列に整形
+            const selectedSymptomText = formData.selectedSymptom
+                ? formData.selectedSymptom.map(item => `${item.name}`).join(',')
+                : 'メニュー未選択';
+
+            // irradiationsCountの整形（nullチェック）
+            const irradiationsText = formData.irradiationsCount || 'なし';
+
+            liff.sendMessages([{
+                type: 'text',
+                text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${selectedSymptomText},${irradiationsText}\n希望日時：\n${formData.dates[0]}\nメッセージ：${formData.message}`
+            }]).then(() => {
+                /* メッセージ送信成功時の処理 */
+                alert('当日キャンセルは無いようにお願いいたします。');
+                /* LIFFウィンドウを閉じる */
+                liff.closeWindow();
+                // 成功時はウィンドウが閉じるのでフラグ解除は不要ですが、念のため
+                // isSubmitting = false; 
+            }).catch((err) => {
+                /* メッセージ送信失敗時の処理 */
+                console.error('メッセージの送信に失敗しました', err);
+                isSubmitting = false; // --- 追加箇所：失敗時は解除して再試行可能にする ---
+            });
         }
-
-        if (!formData.phone) {
-            alert('電話番号を入力してください。');
-            isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
-            return;
-        }
-
-        if (!formData.selectedSymptom) {
-            alert('メニューを選択してください。');
-            isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
-            return;
-        }
-
-        if (!formData.dates) {
-            alert('希望日時を選択してください。');
-            isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
-            return;
-        }
-
-        // selectedSymptomを文字列に整形
-        const selectedSymptomText = formData.selectedSymptom
-            ? formData.selectedSymptom.map(item => `${item.name}`).join(',')
-            : 'メニュー未選択';
-
-        // irradiationsCountの整形（nullチェック）
-        const irradiationsText = formData.irradiationsCount || 'なし';
-
-        liff.sendMessages([{
-            type: 'text',
-            text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${selectedSymptomText},${irradiationsText}\n希望日時：\n${formData.dates[0]}\nメッセージ：${formData.message}`
-        }]).then(() => {
-            /* メッセージ送信成功時の処理 */
-            alert('当日キャンセルは無いようにお願いいたします。');
-            /* LIFFウィンドウを閉じる */
-            liff.closeWindow();
-            // 成功時はウィンドウが閉じるのでフラグ解除は不要ですが、念のため
-            // isSubmitting = false; 
-        }).catch((err) => {
-            /* メッセージ送信失敗時の処理 */
-            console.error('メッセージの送信に失敗しました', err);
-            isSubmitting = false; // --- 追加箇所：失敗時は解除して再試行可能にする ---
-        });
-    }
 
         function formatDate(dateStr) {
             if (!dateStr) return '';
@@ -2023,5 +2066,3 @@
 
 
 </html>
-
-
