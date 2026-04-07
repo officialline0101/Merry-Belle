@@ -196,6 +196,7 @@
 
         input[type="text"],
         input[type="tel"],
+        select.birthday-select,
         textarea {
             width: 100%;
             padding: 12px;
@@ -210,6 +211,36 @@
             position: relative;
             top: -5px;
             /* ← 上に5pxずらす（数値調整OK） */
+        }
+
+        .birthday-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            top: -5px;
+        }
+
+        .birthday-row select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #555555;
+            border-radius: 3px;
+            font-size: 16px;
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+
+        .birthday-row select:focus {
+            border-color: #5ce1e6;
+            outline: none;
+            box-shadow: 0 0 8px rgba(92, 225, 230, 0.4);
+        }
+
+        .birthday-row span {
+            font-size: 16px;
+            color: #333;
         }
 
         .visit-buttons,
@@ -1029,6 +1060,61 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
+        <div class="label">お誕生日（月日）<span class="required">必須</span></div>
+        <div class="birthday-row">
+            <select id="birthdayMonth" onchange="saveBirthday()">
+                <option value="">月</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <span>月</span>
+            <select id="birthdayDay" onchange="saveBirthday()">
+                <option value="">日</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <span>日</span>
+        </div>
+
         <div class="label">ご来店回数<span class="required">必須</span></div>
         <div class="visit-buttons">
             <button type="button" id="firstVisit" onclick="selectVisit(this)">1回目</button>
@@ -1040,38 +1126,39 @@
         <div class="label" id="course">メニューをお選びください<span class="required">必須</span></div>
         <div class="info-text">※メニューを選択すると空き状況のカレンダーが表示されます</div>
         <div class="symptoms">
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">オフのみ40分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">ワンカラー60分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">グラデーション60分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">フレンチ70分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース60分</button>
-            <div class="info-textmenu">※オフなしの所要時間となります</div>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース90分</button>
-            <div class="info-textmenu">※オフなしの所要時間となります</div>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">アートコース120分</button>
-            <div class="info-textmenu">※オフなしの所要時間となります</div>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本ワンカラー90分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本シンプルアートコース120分</button>
-            <button type="button" onclick="selectSymptom(this)" data-price="15000">長さ出し10本アートコース150分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフのみ40分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">ケアコース60分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフなしワンカラー60分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフあり、グラデーション、フレンチ90分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフなしグラデーションorフレンチ70分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフありグラデーションorフレンチ80分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフなしアート75分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフありアート90分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフなしアート90分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフありアート120分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフなしアート120分</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="0">オフありアート140分</button>
         </div>
         <div class="labeltyuuou">
             <span class="highlight-text">オプション</span>
         </div>
         <div class="irradiations">
             <button type="button" id="firstirradiations" onclick="selectirradiations(this)"
-                data-price="1500">オフあり+30分</button>
+                data-price="0">マグネットorフラッシュ</button>
             <button type="button" id="repeatirradiations" onclick="selectirradiations(this)"
-                data-price="150">長さ出し1~3本(+10分)</button>
+                data-price="0">長さ出し1~3本(+10分)</button>
             <button type="button" id="sanirradiations" onclick="selectirradiations(this)"
-                data-price="150">長さ出し3~5本(+15分)</button>
+                data-price="0">長さ出し3~5本(+15分)</button>
             <button type="button" id="yonirradiations" onclick="selectirradiations(this)"
-                data-price="1500">長さ出し5本以上(+20分)</button>
+                data-price="0">長さ出し5本以上(+20分)</button>
             <button type="button" id="goirradiations" onclick="selectirradiations(this)"
-                data-price="150">亀裂補強1~3本(+10分)</button>
+                data-price="0">長さ出し10本(+30分)</button>
             <button type="button" id="rokuirradiations" onclick="selectirradiations(this)"
-                data-price="150">亀裂補強3~5本(+15分)</button>
+                data-price="0">亀裂補強1~3本(+10分)</button>
             <button type="button" id="nanairradiations" onclick="selectirradiations(this)"
-                data-price="150">亀裂補強5本以上(+20分)</button>
+                data-price="0">亀裂補強3~5本(+15分)</button>
+            <button type="button" id="hachiirradiations" onclick="selectirradiations(this)"
+                data-price="0">亀裂補強5本以上(+20分)</button>
         </div>
 
         <div class="label">希望日時<span class="required">必須</span></div>
@@ -1162,10 +1249,11 @@
 
         // 訪問回数ごとの時間設定 (例：初めて=20分、2回目以降=15分)
         let irradiationsTimes = {
-            'オフあり+30分': 30,
+            'マグネットorフラッシュ': 0,
             '長さ出し1~3本(+10分)': 10,
             '長さ出し3~5本(+15分)': 15,
             '長さ出し5本以上(+20分)': 20,
+            '長さ出し10本(+30分)': 30,
             '亀裂補強1~3本(+10分)': 10,
             '亀裂補強3~5本(+15分)': 15,
             '亀裂補強5本以上(+20分)': 20
@@ -1175,15 +1263,17 @@
 
         let menuTimes = {
             'オフのみ40分': 40,
-            'ワンカラー60分': 70,
-            'グラデーション60分': 70,
-            'フレンチ70分': 80,
-            'アートコース60分': 70,
-            'アートコース90分': 100,
-            'アートコース120分': 130,
-            '長さ出し10本ワンカラー90分': 100,
-            '長さ出し10本シンプルアートコース120分': 130,
-            '長さ出し10本アートコース150分': 160
+            'ケアコース60分': 60,
+            'オフなしワンカラー60分': 60,
+            'オフあり、グラデーション、フレンチ90分': 90,
+            'オフなしグラデーションorフレンチ70分': 70,
+            'オフありグラデーションorフレンチ80分': 80,
+            'オフなしアート75分': 75,
+            'オフありアート90分': 90,
+            'オフなしアート90分': 90,
+            'オフありアート120分': 120,
+            'オフなしアート120分': 120,
+            'オフありアート140分': 140
         };
 
 
@@ -1199,10 +1289,23 @@
         document.addEventListener('DOMContentLoaded', function () {
             const savedName = localStorage.getItem('name');
             const savedPhone = localStorage.getItem('phone');
+            const savedBirthdayMonth = localStorage.getItem('birthdayMonth');
+            const savedBirthdayDay = localStorage.getItem('birthdayDay');
 
             if (savedName) document.getElementById('name').value = savedName;
             if (savedPhone) document.getElementById('phone').value = savedPhone;
+            if (savedBirthdayMonth) document.getElementById('birthdayMonth').value = savedBirthdayMonth;
+            if (savedBirthdayDay) document.getElementById('birthdayDay').value = savedBirthdayDay;
         });
+
+        // 誕生日をローカルストレージに保存
+        function saveBirthday() {
+            const month = document.getElementById('birthdayMonth').value;
+            const day = document.getElementById('birthdayDay').value;
+            localStorage.setItem('birthdayMonth', month);
+            localStorage.setItem('birthdayDay', day);
+            updateDisplayInfo();
+        }
 
         // スムーズスクロール
         document.querySelectorAll('.side-nav a').forEach(anchor => {
@@ -1221,8 +1324,11 @@
 
         function updateDisplayInfo() {
             const name = document.getElementById('name').value;
+            const bdMonth = document.getElementById('birthdayMonth').value;
+            const bdDay = document.getElementById('birthdayDay').value;
+            const birthdayText = (bdMonth && bdDay) ? `<span style="color:#0c0c0c;"><strong>お誕生日</strong></span>：${bdMonth}月${bdDay}日` : '・お誕生日が未入力です';
             const visitCountText = visitCount ? `<span style="color:#0c0c0c;"><strong>来店回数</strong></span>：${visitCount}` : '・来店回数が未選択です';
-            const selectedMenuText = selectedMenu ? `<span style="color#0c0c0c;"><strong>コース</strong></span>：${selectedMenu}` : '・コースが未選択です';
+            const selectedMenuText = selectedMenu ? `<span style="color:#0c0c0c;"><strong>コース</strong></span>：${selectedMenu}` : '・コースが未選択です';
 
             const selectedSymptomText = selectedSymptom.length > 0
                 ? `<span style="color:#0c0c0c;"><strong>メニュー</strong></span><br>・${selectedSymptom.map(item => `${item.name}`).join('<br>・')}`
@@ -1248,6 +1354,11 @@
         </div>
         <hr>
         <div class="info-row">
+            <p>${birthdayText}</p>
+            <button class="edit-button" onclick="scrollToElement('birthdayMonth')">修正</button>
+        </div>
+        <hr>
+        <div class="info-row">
             <p>${visitCountText}</p>
             <button class="edit-button" onclick="scrollToElement('firstVisit')">修正</button>
         </div>
@@ -1259,7 +1370,7 @@
         <hr>
         <div class="info-row">
             <p>${selectedSymptomText}</p>
-            <button class="edit-button" onclick="scrollToElement('male'); scrollToElement('female'); scrollToElement('whitening');">修正</button>
+            <button class="edit-button" onclick="scrollToElement('course')">修正</button>
         </div>
         <hr>
         <div class="info-row">
@@ -1656,9 +1767,12 @@
             // 送信処理開始（フラグを立てる）
             isSubmitting = true;
 
+            const bdM = document.getElementById('birthdayMonth').value;
+            const bdD = document.getElementById('birthdayDay').value;
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
+                birthday: (bdM && bdD) ? `${bdM}月${bdD}日` : '',
                 visitCount: visitCount,
                 selectedMenu: selectedMenu,
                 selectedSymptom: selectedSymptom && selectedSymptom.length > 0 ? selectedSymptom : null,
@@ -1677,6 +1791,12 @@
             if (!formData.phone) {
                 alert('電話番号を入力してください。');
                 isSubmitting = false; // --- 追加箇所：エラー時は解除 ---
+                return;
+            }
+
+            if (!formData.birthday) {
+                alert('お誕生日を入力してください。');
+                isSubmitting = false;
                 return;
             }
 
@@ -1702,7 +1822,7 @@
 
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${selectedSymptomText},${irradiationsText}\n希望日時：\n${formData.dates[0]}\nメッセージ：${formData.message}`
+                text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\nお誕生日：${formData.birthday}\nご来店回数：${formData.visitCount}\nメニュー：${selectedSymptomText},${irradiationsText}\n希望日時：\n${formData.dates[0]}\nメッセージ：${formData.message}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('当日キャンセルは無いようにお願いいたします。');
